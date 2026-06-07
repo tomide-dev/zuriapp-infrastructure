@@ -55,6 +55,14 @@ resource "aws_security_group" "zuriapp_sg" {
   }
 
   ingress {
+    description = "Terraform"
+    from_port   = 30080
+    to_port     = 30080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     description = "Kubernetes API"
     from_port   = 6443
     to_port     = 6443
