@@ -55,9 +55,17 @@ resource "aws_security_group" "zuriapp_sg" {
   }
 
   ingress {
-    description = "Terraform"
+    description = "Frontend NodePort"
     from_port   = 30080
     to_port     = 30080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Backend NodePort"
+    from_port   = 30500
+    to_port     = 30500
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
